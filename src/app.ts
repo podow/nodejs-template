@@ -1,20 +1,29 @@
-const express = require('express');
+import express from 'express';
+import redis from './utils/redisClient';
+import sequilize from './utils/sequilizeClient'
 const app = express();
-const redisClient = require('./utils/redisClient');
 
 const PORT = process.env.PORT || 8080;
 
 app.get('/', async (req: any, res: any) => {
-  const {key} = req.query;
+  sequilize
+    .authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+    })
+    .catch((err: string) => {
+      console.error('Unable to connect to the database:', err);
+    });
+  // const {key} = req.query;
 
-  if (key) {
-    await redisClient.setAsync('key', key);
-  }
+  // if (key) {
+  //   await redis.setAsync('key', key);
+  // }
   
-  if (redisClient.getAsync('key')) {
-    const data = await redisClient.getAsync('key');
-    res.send(data);
-  }
+  // if (redis.getAsync('key')) {
+  //   const data = await redis.getAsync('key');
+  //   res.send(data);
+  // }
 
   res.send('Hello World!');
 });
