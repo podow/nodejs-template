@@ -5,6 +5,7 @@ import session from 'express-session';
 import cors from 'cors';
 
 import HttpRequestError from './exceptions/HttpRequestError';
+import routes from './routes'
 
 const PORT = process.env.PORT || 8080;
 
@@ -23,9 +24,7 @@ app.use(session({ secret: 'nodejs', cookie: { maxAge: 60000 }, resave: false, sa
 
 app.use('/favicon.ico', express.static('./static/favicon.ico'));
 
-app.get('/', async (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
+app.use(routes);
 
 /**
  * Catch 404 and forward to error handler
