@@ -1,9 +1,9 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import users from './users';
 
 const router = express.Router();
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', async (req, res) => {
   res.send('Hello World!');
 });
 
