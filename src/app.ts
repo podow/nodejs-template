@@ -5,7 +5,7 @@ import session from 'express-session';
 import cors from 'cors';
 
 import HttpRequestError from './exceptions/HttpRequestError';
-import routes from './routes'
+import routes from './routes';
 
 const PORT = process.env.PORT || 8080;
 
@@ -39,11 +39,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
  * Define as the last app.use callback
  */
 app.use((err: HttpRequestError, req: Request, res: Response) => {
-  res
-    .status(err.status || 500)
-    .send({
-      err: err.message
-    });
+  res.status(err.status || 500).send({
+    err: err.message,
+  });
 });
 
 app.listen(PORT, () => {

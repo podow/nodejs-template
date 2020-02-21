@@ -5,4 +5,4 @@ router.get('/', (req, res) => {
   res.send('Users page');
 });
 
-export default router
+export default router;

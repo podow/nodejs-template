@@ -9,4 +9,4 @@ router.get('/', (req, res) => {
 
 router.use('/users', users);
 
-export default router
+export default router;
