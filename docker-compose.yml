@@ -14,7 +14,10 @@ services:
     links:
       - redis
     environment:
-      DATABASE_URL: postgres://postgres@postgres/test
+      DATABASE_HOST: postgres
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_NAME: test
       REDIS_PORT: 6379
   postgres:
     container_name: postgres
