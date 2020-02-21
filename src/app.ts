@@ -3,7 +3,9 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-app.get('/', async (req: any, res: any) => {
+app.use('/favicon.ico', express.static('./static/favicon.ico'));
+
+app.get('/', async (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
