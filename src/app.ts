@@ -1,7 +1,25 @@
-import express from 'express';
-const app = express();
+import express, { Request, Response, NextFunction } from 'express';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import cors from 'cors';
+
+import HttpRequestError from './exceptions/HttpRequestError';
 
 const PORT = process.env.PORT || 8080;
+
+const app = express();
+
+/**
+ * Middlewares
+ */
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({ secret: 'nodejs', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
 app.use('/favicon.ico', express.static('./static/favicon.ico'));
 
