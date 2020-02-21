@@ -1,5 +1,7 @@
 {
-  "name": "test",
+  "name": "nodejs-template",
+  "description": "Template for express server with postgres & redis",
+  "repository": "https://github.com/podow/nodejs-template",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
